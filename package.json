@@ -4,7 +4,10 @@
   "description": "A React version of mevn-todos. The purpose of this is to learn React.",
   "main": "index.js",
   "scripts": {
-    "dev": "node server"
+    "build": "next build",
+    "dev": "node server",
+    "test": "cross-env NODE_ENV=unitTests mocha \"server/**/*.spec.js\"",
+    "integration": "cross-env NODE_ENV=test mocha \"server/integrationTests\" --exit"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "chai-http": "^3.0.0",
+    "chai-http": "git+https://github.com/chaijs/chai-http.git",
     "chai-passport-strategy": "^1.0.1",
     "chai-sinon": "^2.8.1",
     "cross-env": "^5.1.3",
