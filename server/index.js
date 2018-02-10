@@ -36,7 +36,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cookieSession({
-  name: 'mevn-todo-session',
+  name: 'mern-todo-session',
   secret : process.env.SESSION_SECRET
 }))
 app.use(passport.initialize())
@@ -58,9 +58,13 @@ app.use((req, res, next) => {
 /*
   Next
 */
-var nextDev = (process.env.NODE_ENV !== 'production')
+var nextDev = (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'unitTests')
 var nextApp = next({ dev: nextDev })
 var nextHandler = nextApp.getRequestHandler()
+
+nextApp.prepare().then(() => {
+  console.log('Next prepared')
+})
 
 app.use(nextHandler)
 
@@ -77,8 +81,6 @@ configPassport()
 */
 var port = process.env.PORT || 3000
 
-nextApp.prepare().then(() => {
-  module.exports = app.listen(port, function() {
-    console.log("Listening on port " + port)
-  })
+module.exports = app.listen(port, function() {
+  console.log("Listening on port " + port)
 })
