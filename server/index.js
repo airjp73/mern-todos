@@ -7,6 +7,7 @@ var cookieSession = require('cookie-session')
 var bodyParser    = require('body-parser')
 var cookieParser  = require('cookie-parser')
 var logger        = require('morgan')
+var next          = require('next')
 
 //Environment Variables
 require('env2')('secrets.env')
@@ -54,6 +55,15 @@ app.use((req, res, next) => {
   next()
 })
 
+/*
+  Next
+*/
+var nextDev = (process.env.NODE_ENV !== 'production')
+var nextApp = next({ dev: nextDev })
+var nextHandler = nextApp.getRequestHandler()
+
+app.use(nextHandler)
+
 ////Error handling goes last
 var handleErrors = require("./router/middleware/handleErrors.js")
 app.use(handleErrors)
@@ -66,6 +76,9 @@ configPassport()
   Start listening
 */
 var port = process.env.PORT || 3000
-module.exports = app.listen(port, function() {
-  console.log("Listening on port " + port)
+
+nextApp.prepare().then(() => {
+  module.exports = app.listen(port, function() {
+    console.log("Listening on port " + port)
+  })
 })
