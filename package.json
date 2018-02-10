@@ -4,7 +4,7 @@
   "description": "A React version of mevn-todos. The purpose of this is to learn React.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,10 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.4",
     "morgan": "^1.9.0",
-    "passport": "^0.4.0"
+    "next": "^5.0.0",
+    "passport": "^0.4.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
