@@ -1,0 +1,47 @@
+{
+  "name": "mern-todos",
+  "version": "1.0.0",
+  "description": "A React version of mevn-todos. The purpose of this is to learn React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airjp73/mern-todos.git"
+  },
+  "author": "Aaron Pettengill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airjp73/mern-todos/issues"
+  },
+  "homepage": "https://github.com/airjp73/mern-todos#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "env2": "^2.2.0",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.4",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "chai-passport-strategy": "^1.0.1",
+    "chai-sinon": "^2.8.1",
+    "cross-env": "^5.1.3",
+    "email-templates": "^3.3.4",
+    "mocha": "^5.0.0",
+    "nodemailer": "^4.4.2",
+    "nodemon": "^1.14.12",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth2": "^0.1.6",
+    "passport-local": "^1.0.0",
+    "proxyquire": "^1.8.0",
+    "require-fields": "^1.0.1",
+    "sinon": "^4.2.2"
+  }
+}
