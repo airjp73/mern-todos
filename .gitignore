@@ -1,8 +1,8 @@
 #Node Modules
 **/node_modules
 
-#Nuxt build
-.nuxt
+#Next build
+.next
 
 #Environment Variables
 **.env
