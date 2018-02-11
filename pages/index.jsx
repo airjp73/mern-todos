@@ -23,6 +23,8 @@ const Index = ({user, onAddClick, onRemoveClick}) => {
   )
 }
 
+////For testing purposes only
+//Log in a test user to make sure everything is hooked up right
 Index.getInitialProps = async ({store, req}) => {
   if (req.isAuthenticated()) {
     store.dispatch(login(req.user.toObject()))
