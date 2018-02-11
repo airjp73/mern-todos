@@ -2,11 +2,13 @@ import Layout from '../components/Layout.jsx'
 import TodoEntry from '../components/TodoEntry.jsx'
 import TodoList from '../components/TodoList.jsx'
 
-import {addTodo, removeTodo} from '../store/user/actions'
+import {login, addTodo, removeTodo} from '../store/user/actions'
 import {initStore} from '../store'
 
 import { connect } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
+
+import axios from 'axios'
 
 const Index = ({user, onAddClick, onRemoveClick}) => {
   if (!user) {
@@ -19,6 +21,21 @@ const Index = ({user, onAddClick, onRemoveClick}) => {
       <TodoList onRemoveClick={onRemoveClick} todos={user.todos} />
     </Layout>
   )
+}
+
+Index.getInitialProps = async ({store, req}) => {
+  if (req.isAuthenticated()) {
+    store.dispatch(login(req.user.toObject()))
+    return
+  }
+
+  var body = {
+    email: 'bob@bob.com',
+    password: 'hello'
+  }
+
+  var res = await axios.post('/api/login', body)
+  return {user:res.data}
 }
 
 const mapStateToProps = (state) => {

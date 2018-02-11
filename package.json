@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "node server",
-    "production" : "cross-env NODE_ENV=production node server",
+    "production": "cross-env NODE_ENV=production node server",
     "test": "cross-env NODE_ENV=unitTests mocha \"server/**/*.spec.js\"",
     "integration": "cross-env NODE_ENV=test mocha \"server/integrationTests\" --exit"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/airjp73/mern-todos#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
