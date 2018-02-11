@@ -8,7 +8,7 @@ import {initStore} from '../store'
 import { connect } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 
-const template = ({todos, onAddClick, onRemoveClick}) => (
+const Index = ({todos, onAddClick, onRemoveClick}) => (
   <Layout>
     <TodoEntry onAddClick={onAddClick} />
     <TodoList onRemoveClick={onRemoveClick} todos={todos} />
@@ -30,10 +30,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Index = withRedux(
+const wrappedIndex = withRedux(
   initStore,
   mapStateToProps,
   mapDispatchToProps
-)(template)
+)(Index)
 
-export default Index
+export default wrappedIndex
