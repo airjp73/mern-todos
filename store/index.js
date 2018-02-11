@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from 'redux'
 
-import todos from './todos/reducers'
+import user from './user/reducers'
 
-const reducers  = combineReducers({todos})
+const reducers  = combineReducers({user})
 
 export const initStore = (initialState = {}) => {
   return createStore(reducers, initialState)
