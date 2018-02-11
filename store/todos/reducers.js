@@ -6,11 +6,13 @@ function todos(state = [], action) {
     case ADD_TODO:
       return [
         ...state,
-        {text: actions.text}
+        {text: action.text}
       ]
 
     case REMOVE_TODO:
-      let index = state.indexOf(action.text)
+      let index = state.findIndex((todo) => {
+        return todo.text === action.text
+      })
       if (index != -1) {
         let newState = state.slice()
         newState.splice(index, 1)

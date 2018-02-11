@@ -6,5 +6,5 @@ export function addTodo(text) {
 }
 
 export function removeTodo(text) {
-  return {'type': REMOVE_TODO, text}
+  return {type: REMOVE_TODO, text}
 }
