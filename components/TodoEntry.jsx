@@ -4,15 +4,13 @@ class TodoEntry extends React.Component {
   static propTypes = {
     onAddClick: PropTypes.func.isRequired
   }
+
   constructor(props) {
     super(props)
 
     this.state = {
       value: ""
     }
-    /*this.propTypes = {
-      onAddClick: PropTypes.func.isRequired
-    }*/
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
