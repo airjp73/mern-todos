@@ -10,13 +10,13 @@ import withRedux from 'next-redux-wrapper'
 
 import axios from 'axios'
 
-const Index = ({user, onAddClick, onRemoveClick}) => {
+const Index = ({user, onAddClick, onRemoveClick, userAgent}) => {
   if (!user) {
     return (<h1>User not logged in!</h1>)
   }
 
   return (
-    <Layout>
+    <Layout userAgent='userAgent'>
       <TodoEntry onAddClick={onAddClick} />
       <TodoList onRemoveClick={onRemoveClick} todos={user.todos} />
     </Layout>
@@ -26,18 +26,10 @@ const Index = ({user, onAddClick, onRemoveClick}) => {
 ////For testing purposes only
 //Log in a test user to make sure everything is hooked up right
 Index.getInitialProps = async ({store, req}) => {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated())
     store.dispatch(login(req.user.toObject()))
-    return
-  }
 
-  var body = {
-    email: 'bob@bob.com',
-    password: 'hello'
-  }
-
-  var res = await axios.post('/api/login', body)
-  return {user:res.data}
+  return {userAgent: req.headers['user-agent']}
 }
 
 const mapStateToProps = (state) => {
